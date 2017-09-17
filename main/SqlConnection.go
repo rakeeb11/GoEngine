@@ -8,6 +8,7 @@ import (
 	"database/sql"
 	"fmt"
 	"bytes"
+	"context"
 )
 
 func main() {
@@ -21,6 +22,7 @@ const (
 )
 
 func Init()  {
+	fmt.Println("context: ", context.Canceled)
 	http.HandleFunc("/", handler)
 }
 
