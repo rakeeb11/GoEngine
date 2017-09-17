@@ -8,7 +8,7 @@ import (
 	"database/sql"
 	"fmt"
 	"bytes"
-	"context"
+	"golang.org/x/net/context"
 )
 
 func main() {
