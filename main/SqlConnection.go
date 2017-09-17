@@ -8,9 +8,6 @@ import (
 	"database/sql"
 	"fmt"
 	"bytes"
-	//"github.com/siddontang/go-mysql/client"
-	//"context"
-	//"github.com/siddontang/go-mysql/client"
 )
 
 func main() {
@@ -37,21 +34,6 @@ func handler(w http.ResponseWriter, r *http.Request)  {
 	connectionName := mustGetEnv(SQL_NAME)
 	user := mustGetEnv(SQL_USER)
 	password := mustGetEnv(SQL_PWD)
-
-	//conn, err := client.Connect(fmt.Sprintf("%s:%s@cloudsql(%s)/", user, password, connectionName), user, password, "outlet")
-	//if err != nil {
-	//	http.Error(w, fmt.Sprintf("Could not open db: %v", err), 500)
-	//}
-	//conn.Ping()
-
-	// query databases
-	//result, err := conn.Execute("SHOW DATABASES")
-	//if err != nil {
-	//	http.Error(w, fmt.Sprintf("Could not open db: %v", err), 500)
-	//}
-	//log.Println(result)
-
-
 
 	w.Header().Set("Content-Type", "text/plain")
 
@@ -81,6 +63,9 @@ func handler(w http.ResponseWriter, r *http.Request)  {
 		fmt.Fprintf(buf, "- %s\n", dbName)
 	}
 	w.Write(buf.Bytes())
+
+	log.Print("Listening on port 8080")
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 func mustGetEnv(key string) (env string) {
