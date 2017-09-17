@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-
+	Init()
 }
 
 const (
@@ -20,7 +20,7 @@ const (
 	SQL_PWD = "CLOUDSQL_PASSWORD"
 )
 
-func init()  {
+func Init()  {
 	http.HandleFunc("/", handler)
 }
 
